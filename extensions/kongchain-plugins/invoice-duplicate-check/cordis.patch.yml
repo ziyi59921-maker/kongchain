@@ -1,0 +1,3 @@
+- insert:
+    - id: invoice-duplicate-check
+      name: './src/index.js'
