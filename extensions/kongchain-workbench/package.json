@@ -1,0 +1,35 @@
+{
+  "name": "@kongchain/workbench",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "KongChain user workbench client plugin: branded hero, task quick entries, file add, history/capability/developer entries, and real session status.",
+  "license": "MIT",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "README.md"
+  ],
+  "dsh": {
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-renderer",
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-sidebar"
+      ]
+    }
+  },
+  "keywords": [
+    "dsh-client-plugin",
+    "kongchain",
+    "workbench"
+  ]
+}
