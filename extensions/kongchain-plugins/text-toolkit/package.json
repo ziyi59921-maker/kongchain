@@ -1,0 +1,19 @@
+{
+  "name": "@kongchain-plugin/text-toolkit",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "统计一段文本的字符数、非空白字符数、单词数、行数，并给出词频前 N 的单词；纯函数实现，无第三方依赖，不读写文件、不访问网络。",
+  "license": "MIT",
+  "main": "src/index.js",
+  "files": [
+    "src",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
