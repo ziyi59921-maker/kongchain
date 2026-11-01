@@ -1,0 +1,3 @@
+- insert:
+    - id: kongchain-office-workspace-entry
+      name: './src/index.js'
