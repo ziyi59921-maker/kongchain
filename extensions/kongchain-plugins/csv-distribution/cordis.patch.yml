@@ -1,0 +1,3 @@
+- insert:
+    - id: csv-distribution
+      name: './src/index.js'
