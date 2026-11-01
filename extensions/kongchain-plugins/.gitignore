@@ -1,0 +1,3 @@
+# 插件工坊运行产物；不进入版本库
+.backups/
+.test-fixtures/
