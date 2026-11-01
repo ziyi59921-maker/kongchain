@@ -1,0 +1,22 @@
+{
+  "name": "@kongchain/bundle",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "KongChain profile bundle: composes the KongChain plugins, skills, and persona over the official dsh-web-app stack.",
+  "license": "MIT",
+  "main": "cordis.patch.yml",
+  "files": [
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "keywords": [
+    "dsh-bundle",
+    "kongchain"
+  ]
+}
