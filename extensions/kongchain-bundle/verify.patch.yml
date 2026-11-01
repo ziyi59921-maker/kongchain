@@ -1,0 +1,54 @@
+# Headless verification overlay for KongChain extensions.
+#
+# Used with the shipped `headless` profile, which keeps the host-plane tool
+# registry and skill provider enabled. Absolute paths are intentional: this file
+# exists only for development verification in this checkout, not for distribution.
+
+- insert:
+    - id: kongchain-core-verify
+      name: 'F:/KongChain/extensions/kongchain-core/src/index.js'
+
+    - id: kongchain-tools-verify
+      name: 'F:/KongChain/extensions/kongchain-tools/src/index.js'
+
+    - id: kongchain-developer-verify
+      name: 'F:/KongChain/extensions/kongchain-developer/src/index.js'
+
+    - id: kongchain-professional-verify
+      name: 'F:/KongChain/extensions/kongchain-professional/src/index.js'
+    - id: kongchain-plugin-creator-verify
+      name: 'F:/KongChain/extensions/kongchain-plugin-creator/src/index.js'
+    - id: kongchain-dev-mode-verify
+      name: 'F:/KongChain/extensions/kongchain-dev-mode/src/index.js'
+    - id: kongchain-internal-control-tools-verify
+      name: 'F:/KongChain/extensions/kongchain-internal-control-tools/src/index.js'
+    - id: kongchain-capability-evolution-verify
+      name: 'F:/KongChain/extensions/kongchain-capability-evolution/src/index.js'
+    - id: kongchain-experts-verify
+      name: '@kongchain/experts'
+    - id: kongchain-task-records-verify
+      name: '@kongchain/task-records'
+    - id: kongchain-office-workspace-verify
+      name: '@kongchain/office-workspace'
+
+    - id: kongchain-skill-filesystem-verify
+      name: '@deepseek-ai/dsh-skill-filesystem'
+      config:
+        providerName: kongchain-filesystem
+        includeDefaultRoots: false
+        customSkillDirs:
+          - 'F:/KongChain/extensions/kongchain-skills/skills'
+        watch: false
+
+# Same persona used by the KongChain profile, applied after the headless base.
+- id: system-prompt
+  config:
+    personaPrefix: >-
+      You are KongChain (控链), an extensible AI agent workbench for accounting,
+      internal control, and audit-assistance scenarios. Work on open-ended tasks:
+      analyze the goal, choose the smallest set of available tools, execute,
+      verify the result, and report evidence and limits. Procurement payment is
+      one professional capability, not a fixed workflow; never assume a fixed
+      business process. In developer mode, modify only the KongChain extension
+      workspace (extensions/, docs/kongchain/) and follow the kongchain-developer
+      skill; do not modify the upstream Harness core.
