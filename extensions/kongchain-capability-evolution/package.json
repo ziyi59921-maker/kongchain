@@ -1,0 +1,22 @@
+{
+  "name": "@kongchain/capability-evolution",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "KongChain capability evolution loop: discover existing skills/tools/plugins, register capability versions, log events, verify installation state, and enforce update policy.",
+  "license": "MIT",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "keywords": [
+    "dsh-plugin",
+    "kongchain",
+    "capability"
+  ]
+}
