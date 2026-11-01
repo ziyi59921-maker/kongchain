@@ -1,0 +1,19 @@
+{
+  "name": "@kongchain-plugin/contract-term-tags",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "统计一段合同/单据文本中各关键词的命中次数并给出首次出现位置片段；纯函数，无第三方依赖，不读写文件、不访问网络。",
+  "license": "MIT",
+  "main": "src/index.js",
+  "files": [
+    "src",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
