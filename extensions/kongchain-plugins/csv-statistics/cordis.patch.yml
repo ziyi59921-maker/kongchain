@@ -1,0 +1,3 @@
+- insert:
+    - id: csv-statistics
+      name: './src/index.js'
