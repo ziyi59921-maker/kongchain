@@ -1,0 +1,276 @@
+# KongChain finance expert presets. The registry row is disabled when the web
+# bundle already provides agent-preset-registry; on headless it supplies one.
+# Each preset mounts real tools, skills and persona, not a decorative avatar.
+- insert:
+    - id: kongchain-expert-registry
+      name: '@deepseek-ai/dsh-agent-preset-registry'
+      disabled: !!js ctx.get('agentPresets') !== undefined
+      config:
+        default: expert-finance-analysis
+    - id: preset-expert-finance-analysis
+      name: '@deepseek-ai/dsh-agent-preset'
+      config:
+        id: expert-finance-analysis
+        name: 财务分析专家
+        description: 财务指标、预算执行、成本费用和异常波动
+        order: 20
+        plugins:
+          - id: persona
+            name: '@deepseek-ai/dsh-persona'
+            config:
+              prefix: |-
+                你是控链财务分析专家。职责：财务指标、预算执行、成本费用结构、异常波动。
+                可用工具：文件读取/搜索、受限 shell、kongchain_finance_profile、kongchain_finance_analyze、kongchain_document_extract、kongchain_finance_deliver。
+                专业技能：financial-data-analysis、kongchain-finance-tools。
+                输入：期间表、预算表、分类/部门字段、金额字段、阈值。输出：结论、证据、计算口径、未知事项、下一步建议、分歧。
+                必须实际调用工具计算；注明字段、口径和假设；异常是线索不是舞弊结论；最后输出结构化 JSON。
+          - id: agent-instructions
+            name: '@deepseek-ai/dsh-agent-instructions'
+            config:
+              maxBytes: 65536
+          - id: time-context
+            name: '@deepseek-ai/dsh-time-context'
+          - id: tool-pwsh
+            name: '@deepseek-ai/dsh-tool-pwsh'
+            disabled: !!js process.platform !== 'win32'
+          - id: tool-bash
+            name: '@deepseek-ai/dsh-tool-bash'
+            disabled: !!js process.platform === 'win32'
+          - id: tool-fs
+            name: '@deepseek-ai/dsh-tool-fs'
+          - id: tool-fs-search
+            name: '@deepseek-ai/dsh-tool-fs-search'
+          - id: skill-filesystem
+            name: '@deepseek-ai/dsh-skill-filesystem'
+            config:
+              customSkillDirs:
+                - F:/KongChain/extensions/kongchain-skills/skills
+          - id: tool-skill
+            name: '@deepseek-ai/dsh-tool-skill'
+          - id: finance-tools
+            name: '@kongchain/internal-control-tools'
+          - id: tool-todo
+            name: '@deepseek-ai/dsh-tool-todo'
+    - id: preset-expert-accounting
+      name: '@deepseek-ai/dsh-agent-preset'
+      config:
+        id: expert-accounting
+        name: 会计核算专家
+        description: 会计凭证、附件、科目辅助检查和账表勾稽
+        order: 21
+        plugins:
+          - id: persona
+            name: '@deepseek-ai/dsh-persona'
+            config:
+              prefix: |-
+                你是控链会计核算专家。职责：凭证字段核查、发票/凭证金额勾稽、附件完整性、科目/账表辅助核对。
+                可用工具：kongchain_voucher_reconcile、kongchain_document_extract、kongchain_rule_check、kongchain_finance_deliver、文件工具。
+                专业技能：accounting-document-review、kongchain-finance-tools。
+                输入：凭证表、发票清单、附件索引、科目/账表数据。输出：结论、证据、计算口径、未知事项、下一步建议、分歧。
+                扫描件/图片低置信只列待核实；不得臆造票面；必须实际调用工具核对。
+          - id: agent-instructions
+            name: '@deepseek-ai/dsh-agent-instructions'
+            config:
+              maxBytes: 65536
+          - id: time-context
+            name: '@deepseek-ai/dsh-time-context'
+          - id: tool-pwsh
+            name: '@deepseek-ai/dsh-tool-pwsh'
+            disabled: !!js process.platform !== 'win32'
+          - id: tool-bash
+            name: '@deepseek-ai/dsh-tool-bash'
+            disabled: !!js process.platform === 'win32'
+          - id: tool-fs
+            name: '@deepseek-ai/dsh-tool-fs'
+          - id: tool-fs-search
+            name: '@deepseek-ai/dsh-tool-fs-search'
+          - id: skill-filesystem
+            name: '@deepseek-ai/dsh-skill-filesystem'
+            config:
+              customSkillDirs:
+                - F:/KongChain/extensions/kongchain-skills/skills
+          - id: tool-skill
+            name: '@deepseek-ai/dsh-tool-skill'
+          - id: finance-tools
+            name: '@kongchain/internal-control-tools'
+          - id: tool-todo
+            name: '@deepseek-ai/dsh-tool-todo'
+    - id: preset-expert-audit-internal
+      name: '@deepseek-ai/dsh-agent-preset'
+      config:
+        id: expert-audit-internal
+        name: 审计与内控专家
+        description: 风险识别、控制评价、测试程序、证据和底稿
+        order: 22
+        plugins:
+          - id: persona
+            name: '@deepseek-ai/dsh-persona'
+            config:
+              prefix: |-
+                你是控链审计与内控专家。职责：风险点、控制目标、测试程序、异常事项、整改建议、底稿框架。
+                可用工具：kongchain_audit_workpaper、kongchain_rule_check、kongchain_evidence_pack、kongchain_voucher_reconcile、文件工具。
+                专业技能：internal-control-basics、working-paper-drafting、evidence-traceability、kongchain-finance-tools。
+                输入：流程、数据、控制描述、已验证发现。输出：结论、证据、计算口径、未知事项、下一步建议、分歧。
+                区分事实/计算/推断/待核实/建议；异常不断言舞弊；必须实际调用工具形成依据。
+          - id: agent-instructions
+            name: '@deepseek-ai/dsh-agent-instructions'
+            config:
+              maxBytes: 65536
+          - id: time-context
+            name: '@deepseek-ai/dsh-time-context'
+          - id: tool-pwsh
+            name: '@deepseek-ai/dsh-tool-pwsh'
+            disabled: !!js process.platform !== 'win32'
+          - id: tool-bash
+            name: '@deepseek-ai/dsh-tool-bash'
+            disabled: !!js process.platform === 'win32'
+          - id: tool-fs
+            name: '@deepseek-ai/dsh-tool-fs'
+          - id: tool-fs-search
+            name: '@deepseek-ai/dsh-tool-fs-search'
+          - id: skill-filesystem
+            name: '@deepseek-ai/dsh-skill-filesystem'
+            config:
+              customSkillDirs:
+                - F:/KongChain/extensions/kongchain-skills/skills
+          - id: tool-skill
+            name: '@deepseek-ai/dsh-tool-skill'
+          - id: finance-tools
+            name: '@kongchain/internal-control-tools'
+          - id: tool-todo
+            name: '@deepseek-ai/dsh-tool-todo'
+    - id: preset-expert-tax-policy
+      name: '@deepseek-ai/dsh-agent-preset'
+      config:
+        id: expert-tax-policy
+        name: 税务与政策研究专家
+        description: 官方资料检索、适用条件、有效期和来源核验
+        order: 23
+        plugins:
+          - id: persona
+            name: '@deepseek-ai/dsh-persona'
+            config:
+              prefix: |-
+                你是控链税务与政策研究专家。职责：检索官方资料、核对适用条件/有效期/来源。
+                可用工具：web_search、web_fetch、文件读取、kongchain_document_extract。
+                专业技能：policy-research、kongchain-finance-tools。
+                输入：政策问题、税种/地区/期间、需要核验的来源。输出：结论、证据（含来源链接/发布日期）、计算口径、未知事项、下一步建议、分歧。
+                只引用实际检索到的官方资料；无可靠来源时标为待核实，不编造法规。
+          - id: agent-instructions
+            name: '@deepseek-ai/dsh-agent-instructions'
+            config:
+              maxBytes: 65536
+          - id: time-context
+            name: '@deepseek-ai/dsh-time-context'
+          - id: tool-pwsh
+            name: '@deepseek-ai/dsh-tool-pwsh'
+            disabled: !!js process.platform !== 'win32'
+          - id: tool-bash
+            name: '@deepseek-ai/dsh-tool-bash'
+            disabled: !!js process.platform === 'win32'
+          - id: tool-fs
+            name: '@deepseek-ai/dsh-tool-fs'
+          - id: tool-fs-search
+            name: '@deepseek-ai/dsh-tool-fs-search'
+          - id: skill-filesystem
+            name: '@deepseek-ai/dsh-skill-filesystem'
+            config:
+              customSkillDirs:
+                - F:/KongChain/extensions/kongchain-skills/skills
+          - id: tool-skill
+            name: '@deepseek-ai/dsh-tool-skill'
+          - id: tool-web
+            name: '@deepseek-ai/dsh-tool-web'
+            config:
+              fetch: true
+              searchTimeoutMs: 60000
+          - id: finance-tools
+            name: '@kongchain/internal-control-tools'
+    - id: preset-expert-excel-data
+      name: '@deepseek-ai/dsh-agent-preset'
+      config:
+        id: expert-excel-data
+        name: Excel 与财务数据专家
+        description: 数据清洗、复杂计算、跨表对账及异常分析
+        order: 24
+        plugins:
+          - id: persona
+            name: '@deepseek-ai/dsh-persona'
+            config:
+              prefix: |-
+                你是控链 Excel 与财务数据专家。职责：字段识别、清洗、重复/缺失/异常、跨表对账、可复算结果文件。
+                可用工具：kongchain_finance_profile、kongchain_financial_compare、kongchain_finance_analyze、kongchain_finance_deliver、文件工具。
+                专业技能：financial-data-analysis、kongchain-finance-tools。
+                输入：XLSX/CSV、键列、金额列、分类/日期字段。输出：结论、证据、计算口径、未知事项、下一步建议、分歧。
+                金额用 Decimal/真实工具计算；原始文件不覆盖；异常是线索。
+          - id: agent-instructions
+            name: '@deepseek-ai/dsh-agent-instructions'
+            config:
+              maxBytes: 65536
+          - id: time-context
+            name: '@deepseek-ai/dsh-time-context'
+          - id: tool-pwsh
+            name: '@deepseek-ai/dsh-tool-pwsh'
+            disabled: !!js process.platform !== 'win32'
+          - id: tool-bash
+            name: '@deepseek-ai/dsh-tool-bash'
+            disabled: !!js process.platform === 'win32'
+          - id: tool-fs
+            name: '@deepseek-ai/dsh-tool-fs'
+          - id: tool-fs-search
+            name: '@deepseek-ai/dsh-tool-fs-search'
+          - id: skill-filesystem
+            name: '@deepseek-ai/dsh-skill-filesystem'
+            config:
+              customSkillDirs:
+                - F:/KongChain/extensions/kongchain-skills/skills
+          - id: tool-skill
+            name: '@deepseek-ai/dsh-tool-skill'
+          - id: finance-tools
+            name: '@kongchain/internal-control-tools'
+          - id: tool-todo
+            name: '@deepseek-ai/dsh-tool-todo'
+    - id: preset-expert-report-workpaper
+      name: '@deepseek-ai/dsh-agent-preset'
+      config:
+        id: expert-report-workpaper
+        name: 报告与底稿专家
+        description: 将已验证结果整理为工作底稿、报告和复核清单
+        order: 25
+        plugins:
+          - id: persona
+            name: '@deepseek-ai/dsh-persona'
+            config:
+              prefix: |-
+                你是控链报告与底稿专家，也是汇总专家。职责：整合已验证结果，形成工作底稿、报告、复核清单。
+                可用工具：kongchain_report_generate、kongchain_finance_deliver、kongchain_audit_workpaper、kongchain_evidence_pack、present、文件工具。
+                专业技能：working-paper-drafting、evidence-traceability、kongchain-finance-tools。
+                输入：多个专家的结构化结果、源文件、复核要求。输出：结论、证据、计算口径、未知事项、下一步建议、分歧。
+                不一致结果必须明示；不得强行平均或掩盖冲突；结论仅基于真实来源。
+          - id: agent-instructions
+            name: '@deepseek-ai/dsh-agent-instructions'
+            config:
+              maxBytes: 65536
+          - id: time-context
+            name: '@deepseek-ai/dsh-time-context'
+          - id: tool-pwsh
+            name: '@deepseek-ai/dsh-tool-pwsh'
+            disabled: !!js process.platform !== 'win32'
+          - id: tool-bash
+            name: '@deepseek-ai/dsh-tool-bash'
+            disabled: !!js process.platform === 'win32'
+          - id: tool-fs
+            name: '@deepseek-ai/dsh-tool-fs'
+          - id: tool-fs-search
+            name: '@deepseek-ai/dsh-tool-fs-search'
+          - id: skill-filesystem
+            name: '@deepseek-ai/dsh-skill-filesystem'
+            config:
+              customSkillDirs:
+                - F:/KongChain/extensions/kongchain-skills/skills
+          - id: tool-skill
+            name: '@deepseek-ai/dsh-tool-skill'
+          - id: finance-tools
+            name: '@kongchain/internal-control-tools'
+          - id: tool-present
+            name: '@deepseek-ai/dsh-tool-present'
