@@ -1,0 +1,21 @@
+{
+  "name": "@kongchain/core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "KongChain runtime identity and extension manifest tooling for the DeepSeek Harness.",
+  "license": "MIT",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "keywords": [
+    "dsh-plugin",
+    "kongchain"
+  ]
+}
