@@ -1,0 +1,19 @@
+{
+  "name": "@kongchain-plugin/invoice-duplicate-check",
+  "version": "0.1.2",
+  "private": true,
+  "type": "module",
+  "description": "按可配置字段组合分组检查采购发票重复项，默认匹配供应商、发票号码与金额。",
+  "license": "MIT",
+  "main": "src/index.js",
+  "files": [
+    "src",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
