@@ -1,0 +1,16 @@
+{
+  "name": "@kongchain/skills",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "KongChain product and developer skills, discovered through dsh-skill-filesystem.",
+  "license": "MIT",
+  "files": [
+    "skills",
+    "README.md"
+  ],
+  "keywords": [
+    "dsh-skill",
+    "kongchain"
+  ]
+}
