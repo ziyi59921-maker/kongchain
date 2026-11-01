@@ -1,0 +1,19 @@
+{
+  "name": "@kongchain-plugin/csv-distribution",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "补充分位数、中位数和等宽直方图的只读 CSV 分布统计工具；仅使用 Node 内置模块，读取授权工作区内的单个 CSV。",
+  "license": "MIT",
+  "main": "src/index.js",
+  "files": [
+    "src",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
