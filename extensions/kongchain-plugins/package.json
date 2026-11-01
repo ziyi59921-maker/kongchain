@@ -1,0 +1,11 @@
+{
+  "name": "@kongchain/plugins-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Workspace for KongChain agent-authored local plugin bundles; generated plugins live in subdirectories.",
+  "license": "MIT",
+  "files": [
+    "README.md"
+  ]
+}
