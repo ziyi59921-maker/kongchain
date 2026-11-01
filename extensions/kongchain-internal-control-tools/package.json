@@ -1,0 +1,24 @@
+{
+  "name": "@kongchain/internal-control-tools",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "KongChain independent internal-control tools: document extraction, financial comparison, deterministic rules, evidence packs, and Word/Excel working papers.",
+  "license": "MIT",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "python",
+    "README.md"
+  ],
+  "keywords": [
+    "dsh-plugin",
+    "kongchain",
+    "internal-control",
+    "documents"
+  ]
+}
