@@ -1,0 +1,22 @@
+{
+  "name": "@kongchain/dev-mode",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "KongChain developer mode: explicit state, tool guards, diff/snapshot/rollback, tests, and a /developer UI command.",
+  "license": "MIT",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "keywords": [
+    "dsh-plugin",
+    "kongchain",
+    "developer-mode"
+  ]
+}
