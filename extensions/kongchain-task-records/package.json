@@ -1,0 +1,29 @@
+{
+  "name": "@kongchain/task-records",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "KongChain structured task execution records, evidence traceability, status verification, export and redaction.",
+  "license": "MIT",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "keywords": [
+    "dsh-plugin",
+    "kongchain",
+    "task-records",
+    "evidence"
+  ]
+}
