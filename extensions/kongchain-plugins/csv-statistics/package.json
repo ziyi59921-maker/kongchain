@@ -1,0 +1,19 @@
+{
+  "name": "@kongchain-plugin/csv-statistics",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Compute row count, column names, missing-value counts, and Decimal-precise numeric statistics for one authorized workspace CSV file.",
+  "license": "MIT",
+  "main": "src/index.js",
+  "files": [
+    "src",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
