@@ -1,0 +1,78 @@
+# KongChain bundle patch.
+#
+# This bundle is applied after @deepseek-ai/dsh-base and
+# @deepseek-ai/dsh-web-app. It adds host-plane KongChain plugins, one global
+# filesystem skill provider, the KongChain persona, and the sidebar brand.
+# It does not replace the Agent Loop, session, model adapter, tool registry, or
+# Web UI.
+#
+# Plugin rows reference packages installed as profile dependencies (link: to
+# this checkout during development). The skill root is an absolute path into
+# this checkout; update it if the checkout moves.
+
+- insert:
+    - id: kongchain-core
+      name: '@kongchain/core'
+
+    - id: kongchain-tools
+      name: '@kongchain/tools'
+
+    - id: kongchain-developer
+      name: '@kongchain/developer'
+
+    # Internal-control professional instructions as an ordered system section,
+    # separate from the persona and from the per-task skills.
+    - id: kongchain-professional
+      name: '@kongchain/professional'
+    - id: kongchain-plugin-creator
+      name: '@kongchain/plugin-creator'
+    - id: kongchain-dev-mode
+      name: '@kongchain/dev-mode'
+    - id: kongchain-internal-control-tools
+      name: '@kongchain/internal-control-tools'
+    - id: kongchain-capability-evolution
+      name: '@kongchain/capability-evolution'
+    - id: kongchain-experts
+      name: '@kongchain/experts'
+    - id: kongchain-task-records
+      name: '@kongchain/task-records'
+    - id: kongchain-office-workspace
+      name: '@kongchain/office-workspace'
+
+    # Desktop work platform shell: left navigation, workbench dashboard,
+    # file workspace, task board, capability center. Replaces the chat-only
+    # homepage with a professional finance software layout.
+    - id: kongchain-workspace-shell
+      name: '@kongchain/workspace-shell'
+
+    # Client-only brand occupants for the sidebar brand slots; no core UI edit.
+    - id: kongchain-brand
+      name: '@kongchain/brand'
+    - id: kongchain-workbench
+      name: '@kongchain/workbench'
+
+    # The base dsh-skill-filesystem row is disabled by dsh-web-app; this is a
+    # separate global-layer provider, so KongChain skills are visible to every
+    # agent preset without changing a preset.
+    - id: kongchain-skill-filesystem
+      name: '@deepseek-ai/dsh-skill-filesystem'
+      config:
+        providerName: kongchain-filesystem
+        includeDefaultRoots: false
+        customSkillDirs:
+          - 'F:/KongChain/extensions/kongchain-skills/skills'
+        watch: true
+
+# Keep the upstream Harness identity, but state the product persona for every
+# session created by this profile.
+- id: system-prompt
+  config:
+    personaPrefix: >-
+      You are KongChain (控链), an extensible AI agent workbench for accounting,
+      internal control, and audit-assistance scenarios. Work on open-ended tasks:
+      analyze the goal, choose the smallest set of available tools, execute,
+      verify the result, and report evidence and limits. Procurement payment is
+      one professional capability, not a fixed workflow; never assume a fixed
+      business process. In developer mode, modify only the KongChain extension
+      workspace (extensions/, docs/kongchain/) and follow the kongchain-developer
+      skill; do not modify the upstream Harness core.
