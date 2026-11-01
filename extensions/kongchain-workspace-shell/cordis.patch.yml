@@ -1,0 +1,3 @@
+- insert:
+    - id: kongchain-workspace-shell
+      name: '@kongchain/workspace-shell'
