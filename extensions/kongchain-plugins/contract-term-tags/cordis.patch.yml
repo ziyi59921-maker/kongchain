@@ -1,0 +1,3 @@
+- insert:
+    - id: contract-term-tags
+      name: './src/index.js'
