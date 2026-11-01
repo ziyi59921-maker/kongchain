@@ -1,0 +1,22 @@
+{
+  "name": "@kongchain/tools",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "KongChain extension and skill discovery tools for the DeepSeek Harness agent.",
+  "license": "MIT",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "keywords": [
+    "dsh-plugin",
+    "kongchain",
+    "tools"
+  ]
+}
