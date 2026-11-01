@@ -1,0 +1,3 @@
+- insert:
+    - id: kongchain-task-records-entry
+      name: './src/index.js'
