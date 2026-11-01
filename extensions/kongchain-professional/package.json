@@ -1,0 +1,22 @@
+{
+  "name": "@kongchain/professional",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "KongChain professional system instructions for accounting, internal control, and audit-assistance work.",
+  "license": "MIT",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "keywords": [
+    "dsh-plugin",
+    "kongchain",
+    "internal-control"
+  ]
+}
